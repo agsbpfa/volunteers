@@ -9,7 +9,6 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --navy: #1a1f3c;
     --cream: #FFF8EE;
     --coral: #FF6B5B;
     --amber: #FFBF3C;
@@ -21,12 +20,13 @@
 
   body {
     font-family: 'Nunito', sans-serif;
-    background-color: var(--navy);
+    background-color: #FFF3E0;
     background-image:
-      radial-gradient(circle at 15% 30%, rgba(155,143,232,0.15) 0%, transparent 50%),
-      radial-gradient(circle at 85% 70%, rgba(255,107,91,0.12) 0%, transparent 50%);
+      radial-gradient(circle at 10% 20%, rgba(155,143,232,0.18) 0%, transparent 45%),
+      radial-gradient(circle at 90% 80%, rgba(255,107,91,0.14) 0%, transparent 45%),
+      radial-gradient(circle at 60% 40%, rgba(78,203,160,0.12) 0%, transparent 40%);
     min-height: 100vh;
-    color: var(--cream);
+    color: #1a1f3c;
     padding: 0 0 60px;
   }
 
@@ -46,7 +46,7 @@
     top: 18px;
     left: 0; right: 0;
     height: 3px;
-    background: rgba(255,255,255,0.25);
+    background: rgba(0,0,0,0.12);
   }
   .flag {
     width: 0; height: 0;
@@ -54,9 +54,7 @@
     border-right: 22px solid transparent;
     border-top: 38px solid var(--coral);
     margin: 0 3px;
-    position: relative;
-    top: 0;
-    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.15));
   }
   .flag:nth-child(2n)   { border-top-color: var(--amber); }
   .flag:nth-child(3n)   { border-top-color: var(--mint); }
@@ -67,23 +65,22 @@
   /* --- HEADER --- */
   .site-header {
     text-align: center;
-    padding: 36px 24px 28px;
-    background: linear-gradient(180deg, rgba(26,31,60,0) 0%, rgba(26,31,60,1) 100%);
+    padding: 32px 24px 24px;
   }
   .site-header h1 {
     font-family: 'Fredoka One', cursive;
     font-size: clamp(2.4rem, 7vw, 4rem);
-    color: var(--amber);
+    color: #3d2e8c;
     letter-spacing: 0.01em;
     line-height: 1.1;
-    text-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.08);
   }
   .site-header .sub {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
-    color: var(--mint);
+    color: #0e7a5a;
     margin-top: 6px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
@@ -94,29 +91,30 @@
     padding: 0 16px;
   }
 
-  /* --- INTRO CARD (not collapsible) --- */
+  /* --- INTRO CARD --- */
   .intro-card {
-    background: var(--lavender);
-    color: var(--navy);
+    background: #EDE7FF;
+    color: #2a1f6e;
     border-radius: 20px;
     padding: 28px 28px 24px;
     margin-bottom: 12px;
     position: relative;
     overflow: hidden;
+    border: 2px solid #c5b8f5;
   }
   .intro-card::after {
     content: '🎉';
     position: absolute;
     font-size: 80px;
     right: -10px; bottom: -12px;
-    opacity: 0.18;
+    opacity: 0.2;
     pointer-events: none;
   }
   .intro-card h2 {
     font-family: 'Fredoka One', cursive;
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: var(--navy);
+    color: #3d2e8c;
   }
   .intro-card p { font-size: 0.97rem; line-height: 1.65; margin-top: 8px; }
 
@@ -126,22 +124,22 @@
     margin-bottom: 12px;
     position: relative;
     overflow: hidden;
+    border: 2px solid rgba(0,0,0,0.07);
   }
 
-  /* The clickable header */
   .section-card summary {
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 22px 28px;
+    padding: 20px 24px;
     cursor: pointer;
     user-select: none;
-    border-radius: 20px;
+    border-radius: 18px;
     transition: filter 0.15s ease;
   }
   .section-card summary::-webkit-details-marker { display: none; }
-  .section-card summary:hover { filter: brightness(1.08); }
+  .section-card summary:hover { filter: brightness(0.96); }
 
   .summary-left {
     display: flex;
@@ -152,34 +150,32 @@
   .section-card .tag {
     display: inline-block;
     font-family: 'Fredoka One', cursive;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    background: rgba(0,0,0,0.15);
+    background: rgba(0,0,0,0.1);
     border-radius: 50px;
     padding: 2px 10px;
     color: inherit;
-    opacity: 0.85;
+    opacity: 0.8;
     width: fit-content;
   }
 
   .section-card h2 {
     font-family: 'Fredoka One', cursive;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     line-height: 1.2;
   }
 
-  /* Chevron */
   .chevron {
     width: 28px;
     height: 28px;
     flex-shrink: 0;
-    background: rgba(0,0,0,0.15);
+    background: rgba(0,0,0,0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease;
     margin-left: 12px;
   }
   .chevron svg {
@@ -191,13 +187,10 @@
     stroke-linejoin: round;
     transition: transform 0.3s ease;
   }
-  details[open] .chevron svg {
-    transform: rotate(180deg);
-  }
+  details[open] .chevron svg { transform: rotate(180deg); }
 
-  /* Body content */
   .card-body {
-    padding: 0 28px 24px;
+    padding: 0 24px 22px;
   }
   .card-body p { font-size: 0.95rem; line-height: 1.7; margin-top: 10px; }
   .card-body p:first-child { margin-top: 0; }
@@ -205,7 +198,7 @@
 
   .highlight {
     display: inline;
-    background: rgba(0,0,0,0.12);
+    background: rgba(0,0,0,0.1);
     border-radius: 4px;
     padding: 1px 5px;
     font-weight: 800;
@@ -220,22 +213,21 @@
     line-height: 1;
   }
 
-  /* Divider between summary and body */
   details[open] summary {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 2px solid rgba(0,0,0,0.08);
   }
 
-  /* Card colour themes */
-  .c-green   { background: #1e6b50; color: #d6faea; }
-  .c-yellow  { background: #7a5800; color: #fff3c4; }
-  .c-purple  { background: #3d2e8c; color: #e5e0ff; }
-  .c-red     { background: #7c1f1a; color: #ffe4e1; }
-  .c-teal    { background: #0e5a68; color: #ccf6ff; }
-  .c-indigo  { background: #2a2a6e; color: #dce0ff; }
-  .c-rose    { background: #7a1f4a; color: #ffe4f1; }
-  .c-slate   { background: #2e3650; color: #dde3f5; }
+  /* Bright light card themes */
+  .c-green   { background: #D6F5E8; color: #0d4f35; }
+  .c-yellow  { background: #FFF3C4; color: #5a3e00; }
+  .c-purple  { background: #EDE7FF; color: #2a1f6e; }
+  .c-red     { background: #FFE4E1; color: #6b1a16; }
+  .c-teal    { background: #CCF6FF; color: #0a3d47; }
+  .c-indigo  { background: #DCEEFF; color: #1a2f6e; }
+  .c-rose    { background: #FFE4F1; color: #6b1040; }
+  .c-slate   { background: #E8EDF5; color: #1e2a45; }
 
   /* --- FOOTER --- */
   .site-footer {
@@ -244,13 +236,12 @@
   }
   .site-footer .contact-pill {
     display: inline-block;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
+    background: #3d2e8c;
     border-radius: 50px;
     padding: 14px 28px;
     font-size: 0.9rem;
     line-height: 1.8;
-    color: var(--cream);
+    color: #EDE7FF;
   }
   .site-footer .contact-pill strong {
     display: block;
@@ -264,7 +255,6 @@
 </head>
 <body>
 
-<!-- Bunting -->
 <div class="bunting" aria-hidden="true">
   <div class="flag"></div><div class="flag"></div><div class="flag"></div>
   <div class="flag"></div><div class="flag"></div><div class="flag"></div>
@@ -281,23 +271,19 @@
 
 <main class="wrapper">
 
-  <!-- Intro (always visible) -->
   <div class="intro-card">
     <h2>Hello, Amazing Volunteers! 👋</h2>
     <p>First of all, a massive <strong>THANK YOU</strong> for signing up to help run GrammarFest this Saturday! 🥳 It's going to be an absolute blast, and we'll be raising some much-needed funds for our fantastic boys at school.</p>
     <p>I've put together these FAQs to answer the most common questions. Tap any section to expand it. If anything else comes up, don't hesitate to ping me on email or WhatsApp — I'm here to help! 💌</p>
   </div>
 
-  <!-- Q1 -->
   <details class="section-card c-green">
     <summary>
       <div class="summary-left">
         <span class="tag">On Arrival</span>
         <h2>📍 Where Do I Start?</h2>
       </div>
-      <div class="chevron">
-        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </summary>
     <div class="card-body">
       <p>Look out for a friendly sign near the entrance directing you to collect your <span class="highlight">VOLUNTEER badges!</span> 🌟 Wear yours proudly — it shows the world just how much this event depends on brilliant people like you.</p>
@@ -308,16 +294,13 @@
     <div class="deco">📍</div>
   </details>
 
-  <!-- Q2 -->
   <details class="section-card c-yellow">
     <summary>
       <div class="summary-left">
         <span class="tag">Running Your Stall</span>
         <h2>🎪 What Do I Do At The Stall?</h2>
       </div>
-      <div class="chevron">
-        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </summary>
     <div class="card-body">
       <p>Don't worry — each stall has clear price lists and instructions so you can hit the ground running. ✅</p>
@@ -330,16 +313,13 @@
     <div class="deco">🎪</div>
   </details>
 
-  <!-- Q3 -->
   <details class="section-card c-purple">
     <summary>
       <div class="summary-left">
         <span class="tag">Tickets</span>
         <h2>🎟️ Do I Have to Buy Entrance Tickets?</h2>
       </div>
-      <div class="chevron">
-        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </summary>
     <div class="card-body">
       <p>Yes please! We kindly ask everyone attending — including wonderful volunteers and their families — to purchase tickets. Even the Headmaster, Mr. Wright, has bought his! 😉</p>
@@ -349,16 +329,13 @@
     <div class="deco">🎟️</div>
   </details>
 
-  <!-- Q4 -->
   <details class="section-card c-red">
     <summary>
       <div class="summary-left">
         <span class="tag">Can't Make It?</span>
         <h2>🚨 Last Minute Cancellation?</h2>
       </div>
-      <div class="chevron">
-        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </summary>
     <div class="card-body">
       <p>We'd absolutely love to see each and every one of you — this event only works because of your help! If something unexpected comes up, <span class="highlight">please phone me (WhatsApp call preferred)</span> so we can arrange a backup quickly. 🤝</p>
@@ -367,16 +344,13 @@
     <div class="deco">🚨</div>
   </details>
 
-  <!-- Q5 -->
   <details class="section-card c-indigo">
     <summary>
       <div class="summary-left">
         <span class="tag">Finishing Up</span>
         <h2>📸 Done Volunteering — What Next?</h2>
       </div>
-      <div class="chevron">
-        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </summary>
     <div class="card-body">
       <p>Please make sure the token tub, SumUp machine, and any cash float are securely handed to the next volunteer (or to Ravi if you're finishing at 6pm). 🔒</p>
@@ -386,16 +360,13 @@
     <div class="deco">📸</div>
   </details>
 
-  <!-- Q6 -->
   <details class="section-card c-teal">
     <summary>
       <div class="summary-left">
         <span class="tag">Eco Corner</span>
         <h2>♻️ Do I Keep The Volunteer Badge?</h2>
       </div>
-      <div class="chevron">
-        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </summary>
     <div class="card-body">
       <p>Please drop your badge back at the entrance on your way out — we reuse them for future PFA events. Thank you for helping us stay eco-friendly! 🌱</p>
@@ -403,16 +374,13 @@
     <div class="deco">♻️</div>
   </details>
 
-  <!-- Q7 -->
   <details class="section-card c-rose">
     <summary>
       <div class="summary-left">
         <span class="tag">The Big Number</span>
         <h2>💰 How Much Did We Raise?</h2>
       </div>
-      <div class="chevron">
-        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </summary>
     <div class="card-body">
       <p>I'll post the totals in a couple of days — keep an eye on your WhatsApp! Every penny goes straight to supporting our brilliant boys at school. 🏫❤️</p>
@@ -421,16 +389,13 @@
     <div class="deco">💰</div>
   </details>
 
-  <!-- Q8 -->
   <details class="section-card c-slate">
     <summary>
       <div class="summary-left">
         <span class="tag">That's a Wrap</span>
         <h2>✅ Is That It?</h2>
       </div>
-      <div class="chevron">
-        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
+      <div class="chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </summary>
     <div class="card-body">
       <p>Yes! That's it! 🎉 Thank you for reading through all of this and for generously giving your time. We cannot wait to see your lovely faces on Saturday — please come and say hello if you get a chance! 👋😊</p>
