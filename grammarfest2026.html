@@ -4,132 +4,448 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GrammarFest 2026 Volunteer Instructions</title>
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-body {
-font-family: 'Inter', sans-serif;
-background-color: #f0f2f5;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a1f3c;
+    --cream: #FFF8EE;
+    --coral: #FF6B5B;
+    --amber: #FFBF3C;
+    --mint: #4ECBA0;
+    --lavender: #9B8FE8;
+    --sky: #5BC4E8;
+    --pink: #F06292;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--navy);
+    background-image:
+      radial-gradient(circle at 15% 30%, rgba(155,143,232,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 85% 70%, rgba(255,107,91,0.12) 0%, transparent 50%);
+    min-height: 100vh;
+    color: var(--cream);
+    padding: 0 0 60px;
+  }
+
+  /* --- BUNTING --- */
+  .bunting {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 0 10px;
+    position: relative;
+    margin-bottom: -4px;
+  }
+  .bunting::before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 0; right: 0;
+    height: 3px;
+    background: rgba(255,255,255,0.25);
+  }
+  .flag {
+    width: 0; height: 0;
+    border-left: 22px solid transparent;
+    border-right: 22px solid transparent;
+    border-top: 38px solid var(--coral);
+    margin: 0 3px;
+    position: relative;
+    top: 0;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+  }
+  .flag:nth-child(2n)   { border-top-color: var(--amber); }
+  .flag:nth-child(3n)   { border-top-color: var(--mint); }
+  .flag:nth-child(4n)   { border-top-color: var(--lavender); }
+  .flag:nth-child(5n)   { border-top-color: var(--sky); }
+  .flag:nth-child(6n)   { border-top-color: var(--pink); }
+
+  /* --- HEADER --- */
+  .site-header {
+    text-align: center;
+    padding: 36px 24px 28px;
+    background: linear-gradient(180deg, rgba(26,31,60,0) 0%, rgba(26,31,60,1) 100%);
+  }
+  .site-header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2.4rem, 7vw, 4rem);
+    color: var(--amber);
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+  }
+  .site-header .sub {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--mint);
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* --- WRAPPER --- */
+  .wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  /* --- INTRO CARD (not collapsible) --- */
+  .intro-card {
+    background: var(--lavender);
+    color: var(--navy);
+    border-radius: 20px;
+    padding: 28px 28px 24px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .intro-card::after {
+    content: '🎉';
+    position: absolute;
+    font-size: 80px;
+    right: -10px; bottom: -12px;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+  .intro-card h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--navy);
+  }
+  .intro-card p { font-size: 0.97rem; line-height: 1.65; margin-top: 8px; }
+
+  /* --- COLLAPSIBLE SECTION CARDS --- */
+  .section-card {
+    border-radius: 20px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* The clickable header */
+  .section-card summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 28px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 20px;
+    transition: filter 0.15s ease;
+  }
+  .section-card summary::-webkit-details-marker { display: none; }
+  .section-card summary:hover { filter: brightness(1.08); }
+
+  .summary-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .section-card .tag {
+    display: inline-block;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.15);
+    border-radius: 50px;
+    padding: 2px 10px;
+    color: inherit;
+    opacity: 0.85;
+    width: fit-content;
+  }
+
+  .section-card h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.35rem;
+    line-height: 1.2;
+  }
+
+  /* Chevron */
+  .chevron {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    background: rgba(0,0,0,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    margin-left: 12px;
+  }
+  .chevron svg {
+    width: 14px; height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.3s ease;
+  }
+  details[open] .chevron svg {
+    transform: rotate(180deg);
+  }
+
+  /* Body content */
+  .card-body {
+    padding: 0 28px 24px;
+  }
+  .card-body p { font-size: 0.95rem; line-height: 1.7; margin-top: 10px; }
+  .card-body p:first-child { margin-top: 0; }
+  .card-body a { color: inherit; font-weight: 700; }
+
+  .highlight {
+    display: inline;
+    background: rgba(0,0,0,0.12);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-weight: 800;
+  }
+
+  .deco {
+    position: absolute;
+    font-size: 72px;
+    right: 10px; bottom: -8px;
+    opacity: 0.12;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  /* Divider between summary and body */
+  details[open] summary {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  /* Card colour themes */
+  .c-green   { background: #1e6b50; color: #d6faea; }
+  .c-yellow  { background: #7a5800; color: #fff3c4; }
+  .c-purple  { background: #3d2e8c; color: #e5e0ff; }
+  .c-red     { background: #7c1f1a; color: #ffe4e1; }
+  .c-teal    { background: #0e5a68; color: #ccf6ff; }
+  .c-indigo  { background: #2a2a6e; color: #dce0ff; }
+  .c-rose    { background: #7a1f4a; color: #ffe4f1; }
+  .c-slate   { background: #2e3650; color: #dde3f5; }
+
+  /* --- FOOTER --- */
+  .site-footer {
+    text-align: center;
+    padding: 28px 20px 10px;
+  }
+  .site-footer .contact-pill {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px;
+    padding: 14px 28px;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--cream);
+  }
+  .site-footer .contact-pill strong {
+    display: block;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    color: var(--amber);
+    margin-bottom: 4px;
+  }
+  .site-footer .contact-pill a { color: var(--sky); }
 </style>
 </head>
-<body class="p-4 sm:p-6 md:p-8 lg:p-10 bg-gradient-to-br from-purple-200 via-blue-200 to-green-200 min-h-screen flex items-center justify-center">
-<div class="container mx-auto p-6 bg-white rounded-3xl shadow-xl max-w-4xl border-4 border-dashed border-purple-400">
-<header class="text-center mb-8">
-<h1 class="text-4xl font-extrabold text-purple-700 mb-2 drop-shadow-lg">🎉 GrammarFest Volunteer Guide! 🎉</h1>
-<p class="text-xl text-gray-700 font-semibold">Your Essential Handbook for a Super Saturday!</p>
+<body>
+
+<!-- Bunting -->
+<div class="bunting" aria-hidden="true">
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div>
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div>
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div>
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div>
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div>
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div>
+</div>
+
+<header class="site-header">
+  <h1>GrammarFest 2026<br>Volunteer Guide</h1>
+  <p class="sub">Because even superheroes need a briefing 🦸</p>
 </header>
-<div class="mb-8 p-6 bg-blue-100 rounded-2xl shadow-md border border-blue-300">
-<h2 class="text-2xl font-bold text-blue-800 mb-3">Hello, Amazing Volunteers! 👋</h2>
-<p class="text-gray-800 leading-relaxed">
-First of all, a massive THANK YOU loads for signing up to help run the spectacular <span class="font-bold text-blue-700">GrammarFest this Saturday!</span> 🥳 It's going to be an absolute blast, plus we'll be raising some much-needed funds to help our fantastic boys at school. I really hope you're all as excited about this incredible fair as we are! ✨
-</p>
-<p class="mt-4 text-gray-800 leading-relaxed">
-I've put together some super helpful instructions in the form of FAQs right here. Please take a moment to read through them carefully, and if any questions pop up, don't hesitate to ping me (email or WhatsApp) – I'm here to help! 💌
-</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="p-6 bg-green-100 rounded-2xl shadow-md border border-green-300">
-<h2 class="text-2xl font-bold text-green-800 mb-3">📍 Where Do I Start?</h2>
-<p class="text-gray-800 leading-relaxed">
-When you arrive at the GrammarFest, keep an eye out for a friendly sign near the entrance that will direct you to collect your <span class="font-bold text-green-700">VOLUNTEER badges!</span> 🌟
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-Please wear your badges proudly for the duration of your session. It helps us showcase just how much we depend on incredible volunteers like YOU to run such a big and brilliant event! 💪
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-Your badge will clearly show your name, the location of your stall, and the timings you're expected to be there. As a little thank you from the PFA for your precious time and efforts, you'll also receive <span class="font-bold text-green-700">free tokens!</span> 🎁
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-As a general rule of thumb, please aim to arrive at your stall at least <span class="font-bold">5-10 minutes before your session begins.</span> This little head start helps us get everything running smoothly and on time! ⏰
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-Please note that there is an adjoining event on the Astro turf that runs until 5pm, so parking will be challenging, please give yourself additional time. Also if there is a queue when you arrive, please make yourselves known to the people at the gates and enter before the general public!
-</p>
-</div>
-<div class="p-6 bg-yellow-100 rounded-2xl shadow-md border border-yellow-300">
-<h2 class="text-2xl font-bold text-yellow-800 mb-3">🎪 What Do I Do At The Stall?</h2>
-<p class="text-gray-800 leading-relaxed">
-Don't worry, you won't be left guessing! Each stall will have clear price lists and instructions to help you run things like a pro. ✅
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-<span class="font-bold text-red-700">Important Note:</span> Except for the Entrance, Token/Raffle counters, Uniform stalls, and the Bar – <span class="font-bold underline">all other stalls are CASHLESS only!</span> You'll be expecting payment in <span class="font-bold text-yellow-700">TOKENS.</span> The number of tokens needed will be clearly marked on your stall's price list. 🎟️
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-You'll also have a handy plastic tub at each stall – please deposit all tokens in there. These will be counted after the event to help us plan an even better fair next time! 📊
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-The Entrance, Token/Raffle stalls, Uniform stalls, and Bar will happily accept <span class="font-bold text-yellow-700">Cash</span> (there will be a float) or <span class="font-bold text-yellow-700">Card/Contactless</span> payments via one of our trusty SumUp machines. These machines are connected to the school's WiFi and should work seamlessly. If you encounter any wobbles with the SumUp machines, please call me immediately (my number is below)! 📞
-</p>
-</div>
-<div class="p-6 bg-purple-100 rounded-2xl shadow-md border border-purple-300">
-<h2 class="text-2xl font-bold text-purple-800 mb-3">🎟️ Do I Have to Buy Entrance Tickets?</h2>
-<p class="text-gray-800 leading-relaxed">
-Yes please! We kindly ask everyone attending, including our wonderful volunteers and their families, to purchase tickets. I got mine last week (and so did the school headmaster, Mr. Wright – he's keen! 😉)!
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-We truly hope that the free tokens included for volunteers will help you grab a cold one (yes, the bar accepts tokens too! 🍻) or savor an exotic delicacy from our absolutely wonderful World Food Court! 🌍🍜
-</p>
-<br>
-<p class="text-gray-800 leading-relaxed">
-Tickets can be purchased at: <a style="text-decoration: underline;" href="https://hopp.to/agsb">hopp.to/agsb</a>
-</p>
-</div>
-<div class="p-6 bg-red-100 rounded-2xl shadow-md border border-red-300">
-<h2 class="text-2xl font-bold text-red-800 mb-3">🚨 Last Minute Cancellation?</h2>
-<p class="text-gray-800 leading-relaxed">
-We would absolutely love to see each and every one of you at the Fest! This amazing event can only run successfully with all the fantastic help you offer. However, if you unexpectedly have to cancel, <span class="font-bold">please do phone me (a WhatsApp call is preferred)</span> so we can quickly arrange for a backup. 🤝
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-Cancellations without notice can cause quite a bit of confusion, and we're really hoping to rely on your amazing support! 🙏
-</p>
-</div>
-<div class="p-6 bg-indigo-100 rounded-2xl shadow-md border border-indigo-300">
-<h2 class="text-2xl font-bold text-indigo-800 mb-3">📸 Done Volunteering, What Next?</h2>
-<p class="text-gray-800 leading-relaxed">
-Please ensure that the plastic tub with tokens, SumUp machines and any cash floats are securely passed onto the next volunteer (or Ravi if you are finishing at 6pm) 🔒
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-There's a super exciting <span class="font-bold text-indigo-700">VOLUNTEER GROUP PHOTO</span> planned in the QUAD (that's near where the music will be pumping!) at <span class="font-bold text-indigo-700">6 PM!</span> 🥳
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-If you've volunteered for a slot starting at 3 PM, please feel free to enjoy the event until 6 PM to be a part of this awesome moment! 🕺💃
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-By being a part of the group photo, we'll assume you consent for the picture to be used in our PFA social media forums, including in the Headmaster's newsletter, our vibrant FB, Instagram, and Twitter pages. Say cheese! 📸
-</p>
-</div>
-<div class="p-6 bg-cyan-100 rounded-2xl shadow-md border border-cyan-300">
-<h2 class="text-2xl font-bold text-cyan-800 mb-3">♻️ Do I Keep The Volunteer Badges?</h2>
-<p class="text-gray-800 leading-relaxed">
-Please ensure you kindly drop the badges at the entrance on your way out of the festival. We're planning to re-use these for future PFA events, so your cooperation helps us be super eco-friendly! 🌱
-</p>
-</div>
-<div class="p-6 bg-pink-100 rounded-2xl shadow-md border border-pink-300">
-<h2 class="text-2xl font-bold text-pink-800 mb-3">💰 How Much Did We Raise Then?</h2>
-<p class="text-gray-800 leading-relaxed">
-I'll be posting some exciting numbers on how much money has been raised once we tally up the totals – so please look out for this message in a couple of days after the event! Every penny raised will be put to amazing use to help our boys at the school. 🏫❤️
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-We'll also be giving out special certificates to all our incredible student volunteers as a heartfelt thank you gesture. They'll receive these next week at school. Bravo! 👏
-</p>
-</div>
-<div class="p-6 bg-gray-100 rounded-2xl shadow-md border border-gray-300">
-<h2 class="text-2xl font-bold text-gray-800 mb-3">✅ Is That It?</h2>
-<p class="text-gray-800 leading-relaxed">
-Yes! That's it! 🎉
-</p>
-<p class="mt-2 text-gray-800 leading-relaxed">
-Thank you once again for reading through this (hopefully not too lengthy!) set of instructions and for generously promising your time at the fair. We're truly looking forward to seeing your lovely faces on Saturday (please come say hello if you get a chance)! 👋😊
-</p>
-</div>
-</div>
-<footer class="mt-8 text-center p-4 bg-gray-50 rounded-2xl shadow-inner border border-gray-200">
-<p class="text-sm text-gray-500">Ravi, AGSB PFA Treasurer</p>
-<p class="text-sm text-gray-500">📞 07545819799</p>
-<p class="text-sm text-gray-500">📧 <a href="mailto:pfaagsb@gmail.com" class="text-blue-400 hover:underline">pfaagsb@gmail.com</a></p>
+
+<main class="wrapper">
+
+  <!-- Intro (always visible) -->
+  <div class="intro-card">
+    <h2>Hello, Amazing Volunteers! 👋</h2>
+    <p>First of all, a massive <strong>THANK YOU</strong> for signing up to help run GrammarFest this Saturday! 🥳 It's going to be an absolute blast, and we'll be raising some much-needed funds for our fantastic boys at school.</p>
+    <p>I've put together these FAQs to answer the most common questions. Tap any section to expand it. If anything else comes up, don't hesitate to ping me on email or WhatsApp — I'm here to help! 💌</p>
+  </div>
+
+  <!-- Q1 -->
+  <details class="section-card c-green">
+    <summary>
+      <div class="summary-left">
+        <span class="tag">On Arrival</span>
+        <h2>📍 Where Do I Start?</h2>
+      </div>
+      <div class="chevron">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </summary>
+    <div class="card-body">
+      <p>Look out for a friendly sign near the entrance directing you to collect your <span class="highlight">VOLUNTEER badges!</span> 🌟 Wear yours proudly — it shows the world just how much this event depends on brilliant people like you.</p>
+      <p>Your badge will show your name, stall location, and timings. As a thank you, you'll also receive <span class="highlight">free tokens</span> 🎁 — and yes, the bar takes tokens too!</p>
+      <p>Please aim to arrive at your stall at least <span class="highlight">5–10 minutes</span> before your session begins to keep things running smoothly. ⏰</p>
+      <p><strong>Heads up:</strong> There's an adjoining event on the Astro turf until 5pm, so parking will be tricky. Allow extra time — and if there's a queue at the gate, let the staff know you're a volunteer and come straight in!</p>
+    </div>
+    <div class="deco">📍</div>
+  </details>
+
+  <!-- Q2 -->
+  <details class="section-card c-yellow">
+    <summary>
+      <div class="summary-left">
+        <span class="tag">Running Your Stall</span>
+        <h2>🎪 What Do I Do At The Stall?</h2>
+      </div>
+      <div class="chevron">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </summary>
+    <div class="card-body">
+      <p>Don't worry — each stall has clear price lists and instructions so you can hit the ground running. ✅</p>
+      <p>Here's a quick payment guide so you know exactly what to expect at your stall:</p>
+      <p>💵 <span class="highlight">Cash accepted:</span> Entrance · Token Stalls · Bar</p>
+      <p>💳 <span class="highlight">Card/Contactless accepted:</span> Entrance · Token Stalls · Bar · Food Stalls · Cakes &amp; Ice Creams · Zorb Football</p>
+      <p>🎟️ <span class="highlight">Tokens only (all other stalls):</span> Please treat tokens exactly like cash — collect every single one in the box provided at your stall. They will all be counted at the end of the day, so don't let any go astray! 📊</p>
+      <p>Card payments are handled via SumUp machines connected to school WiFi — if one plays up, call me straight away! 📞</p>
+    </div>
+    <div class="deco">🎪</div>
+  </details>
+
+  <!-- Q3 -->
+  <details class="section-card c-purple">
+    <summary>
+      <div class="summary-left">
+        <span class="tag">Tickets</span>
+        <h2>🎟️ Do I Have to Buy Entrance Tickets?</h2>
+      </div>
+      <div class="chevron">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </summary>
+    <div class="card-body">
+      <p>Yes please! We kindly ask everyone attending — including wonderful volunteers and their families — to purchase tickets. Even the Headmaster, Mr. Wright, has bought his! 😉</p>
+      <p>Think of your free tokens as a VIP fast-pass to the best bits of the fair — a cold one at the bar or something from the World Food Court is absolutely calling your name! 🌍🍜</p>
+      <p>Tickets: <a href="https://hopp.to/agsb">hopp.to/agsb</a></p>
+    </div>
+    <div class="deco">🎟️</div>
+  </details>
+
+  <!-- Q4 -->
+  <details class="section-card c-red">
+    <summary>
+      <div class="summary-left">
+        <span class="tag">Can't Make It?</span>
+        <h2>🚨 Last Minute Cancellation?</h2>
+      </div>
+      <div class="chevron">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </summary>
+    <div class="card-body">
+      <p>We'd absolutely love to see each and every one of you — this event only works because of your help! If something unexpected comes up, <span class="highlight">please phone me (WhatsApp call preferred)</span> so we can arrange a backup quickly. 🤝</p>
+      <p>Cancellations without notice can cause real confusion on the day, so we're counting on your support. 🙏</p>
+    </div>
+    <div class="deco">🚨</div>
+  </details>
+
+  <!-- Q5 -->
+  <details class="section-card c-indigo">
+    <summary>
+      <div class="summary-left">
+        <span class="tag">Finishing Up</span>
+        <h2>📸 Done Volunteering — What Next?</h2>
+      </div>
+      <div class="chevron">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </summary>
+    <div class="card-body">
+      <p>Please make sure the token tub, SumUp machine, and any cash float are securely handed to the next volunteer (or to Ravi if you're finishing at 6pm). 🔒</p>
+      <p>There's a <span class="highlight">VOLUNTEER GROUP PHOTO</span> in the QUAD (near the music!) at <span class="highlight">6 PM!</span> 🥳 If you volunteered in the 3pm slot, please stick around and join us!</p>
+      <p>By appearing in the photo you're consenting for it to be used on PFA social media, the Headmaster's newsletter, and our FB, Instagram, and Twitter pages. Say cheese! 📸</p>
+    </div>
+    <div class="deco">📸</div>
+  </details>
+
+  <!-- Q6 -->
+  <details class="section-card c-teal">
+    <summary>
+      <div class="summary-left">
+        <span class="tag">Eco Corner</span>
+        <h2>♻️ Do I Keep The Volunteer Badge?</h2>
+      </div>
+      <div class="chevron">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </summary>
+    <div class="card-body">
+      <p>Please drop your badge back at the entrance on your way out — we reuse them for future PFA events. Thank you for helping us stay eco-friendly! 🌱</p>
+    </div>
+    <div class="deco">♻️</div>
+  </details>
+
+  <!-- Q7 -->
+  <details class="section-card c-rose">
+    <summary>
+      <div class="summary-left">
+        <span class="tag">The Big Number</span>
+        <h2>💰 How Much Did We Raise?</h2>
+      </div>
+      <div class="chevron">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </summary>
+    <div class="card-body">
+      <p>I'll post the totals in a couple of days — keep an eye on your WhatsApp! Every penny goes straight to supporting our brilliant boys at school. 🏫❤️</p>
+      <p>Student volunteers will also receive a special certificate in school the following week. Bravo to all of them! 👏</p>
+    </div>
+    <div class="deco">💰</div>
+  </details>
+
+  <!-- Q8 -->
+  <details class="section-card c-slate">
+    <summary>
+      <div class="summary-left">
+        <span class="tag">That's a Wrap</span>
+        <h2>✅ Is That It?</h2>
+      </div>
+      <div class="chevron">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </summary>
+    <div class="card-body">
+      <p>Yes! That's it! 🎉 Thank you for reading through all of this and for generously giving your time. We cannot wait to see your lovely faces on Saturday — please come and say hello if you get a chance! 👋😊</p>
+    </div>
+    <div class="deco">🎊</div>
+  </details>
+
+</main>
+
+<footer class="site-footer">
+  <div class="contact-pill">
+    <strong>Ravi — AGSB PFA Treasurer</strong>
+    📞 07545819799 &nbsp;·&nbsp; 📧 <a href="mailto:pfaagsb@gmail.com">pfaagsb@gmail.com</a>
+  </div>
 </footer>
-</div>
+
 </body>
 </html>
